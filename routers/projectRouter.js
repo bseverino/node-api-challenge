@@ -66,4 +66,17 @@ router.post('/:id', validateAction, validateId(Projects), (req, res) => {
         })
 })
 
+router.put('/:id', validateProject, validateId(Projects), (req, res) => {
+    Projects.update(req.resource.id, req.body)
+        .then(project => {
+            res.status(201).json(project)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                message: 'Error updating project.'
+            })
+        })
+})
+
 module.exports = router
