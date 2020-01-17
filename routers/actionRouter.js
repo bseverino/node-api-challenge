@@ -46,4 +46,17 @@ router.put('/:id', validateAction, validateId(Actions), (req, res) => {
         })
 })
 
+router.delete('/:id', validateId(Actions), (req, res) => {
+    Actions.remove(req.resource.id)
+        .then(deleted => {
+            res.status(202).json(deleted)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                message: 'Error deleting action.'
+            })
+        })
+})
+
 module.exports = router

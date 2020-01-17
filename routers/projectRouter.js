@@ -35,6 +35,19 @@ router.get('/:id', validateId(Projects), (req, res) => {
         })
 })
 
+router.get('/:id/actions', validateId(Projects), (req, res) => {
+    Projects.getProjectActions(req.resource.id)
+        .then(actions => {
+            res.status(200).json(actions)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                message: 'Error retrieving actions.'
+            })
+        })
+})
+
 router.post('/', validateProject, (req, res) => {
     Projects.insert(req.body)
         .then(project => {
@@ -75,6 +88,19 @@ router.put('/:id', validateProject, validateId(Projects), (req, res) => {
             console.log(err)
             res.status(500).json({
                 message: 'Error updating project.'
+            })
+        })
+})
+
+router.delete('/:id', validateId(Projects), (req, res) => {
+    Projects.remove(req.resource.id)
+        .then(deleted => {
+            res.status(202).json(deleted)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                message: 'Error deleting project.'
             })
         })
 })
