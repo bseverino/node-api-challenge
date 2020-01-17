@@ -50,7 +50,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 - [x] What can the API return to help clients know if a request was successful?
     - To help a client know if a request was successful, the API can send a response message.
 
-- [ ] How can we partition our application into sub-applications?
+- [x] How can we partition our application into sub-applications?
+    - We can create different routes to retrieve and interact with resources.
 
 ## Minimum Viable Product
 
