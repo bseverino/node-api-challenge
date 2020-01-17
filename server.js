@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 
 const projectRouter = require('./routers/projectRouter.js')
 const actionRouter = require('./routers/actionRouter.js')
@@ -7,6 +8,7 @@ const logger = require('./middleware/logger.js')
 
 const server = express()
 
+server.use(cors())
 server.use(express.json())
 server.use(logger)
 
