@@ -1,6 +1,6 @@
 function validateId(db) {
     return function(req, res, next) {
-    const id = req.params.id
+        const id = req.params.id
         db.get(id)
             .then(resource => {
                 if (!resource) {
